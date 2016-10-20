@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag "votes" %>
+
+<h1>Here are the comments</h1>
+
+	
+
+	<%if params[:result]%>
+
+	<%@votes.where(result:true).each do |vote|%>
+		<div class="comment">
+			<p><%=link_to(vote.user.email,user_path(vote.user.id))%> said: </p>
+			<p><%=vote.comment%></p>
+			<p>On <%=vote.created_at%></p>
+
+		</div>
+	<%end%>
+
+	<%else%>
+
+	<%@votes.where(result:false).each do |vote|%>
+		<div class="comment">
+			<p><%=vote.comment%></p>
+			<p><%=link_to(vote.user.email,user_path(vote.user.id))%></p>
+		</div>
+	<%end%>
+
+	<%end%>

@@ -1,0 +1,11 @@
+<%=form_for(@vote) do |f|%>
+<%=f.hidden_field(:product_id, value: params[:id])%>
+<%=f.label('Do you like this product ?')%>
+<%=f.radio_button(:result, :true)%>
+<%=f.label('YES')%>
+<%=f.radio_button(:result, :false)%>
+<%=f.label('NO')%>
+<p><%=f.label('Comment')%><br>
+<%=f.text_area(:comment)%></p>
+<%=f.submit('Submit')%>
+<%end%>

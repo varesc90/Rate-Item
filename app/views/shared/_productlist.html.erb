@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "products" %>
+
+<div class="products_list">
+<%=link_to(product) do%>
+
+	<%=image_tag(product.product_pic.url,class: "thumbnail_img")%>
+	<p><%=product.product_name%></p>
+
+<%end%>
+	<p><%=product.number_of_positive_vote%>   <%=image_tag("smile_face.jpeg",class: "faces")%>
+	    <%=product.number_of_negative_vote%>   <%=image_tag("sad_face.jpeg",class: "faces")%>
+	</p>
+</div>
+
+

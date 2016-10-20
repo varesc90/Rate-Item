@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+
+<div class= "show_top_ten_products row bg-info">
+	<h2>Top Products</h2>
+	<ul>
+	<%@top_products.first(9).each do |product|%>
+	
+		<li class="thumbnail"><%=link_to(image_tag(product.product_pic.url(:thumbnail),class: "img-thumbnail"),product)%></li>
+	<%end%>
+	</ul>
+</div>
+
+<div class= "show_recent_products row bg-info">
+	<h2>What's new</h2>
+	<%Product.last(9).reverse.each do |product|%>
+	<ul>
+		<li class="thumbnail"><%=link_to(image_tag(product.product_pic.url(:thumbnail),class: "img-thumbnail"),product)%></li>
+	</ul>
+	<%end%>
+</div>
+
+<div class= "show_trending_products row bg-info">
+	<h2>Now Trending</h2>
+	<%@trending_products.first(9).each do |product|%>
+	<ul>
+		<li class="thumbnail"><%=link_to(image_tag(product.product_pic.url(:thumbnail),class: "img-thumbnail"),product)%></li>
+	</ul>
+	<%end%>
+
+</div>
+

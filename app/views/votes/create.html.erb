@@ -1,0 +1,31 @@
+<div class = "row">
+
+<h1>You have rate the following</h1>
+
+</div>
+
+<div class ="row">
+	<div class ="product_detail col-md-7">
+	<h3><%=@product.product_name%></h3>
+	<%=image_tag(@product.product_pic.url(:full))%>
+
+	<h3>Product Information</h3>
+	<p><%=@product.productdescription%></p>
+	<p>Dimension (L x W x H) : <%=@product.productinformation.length%> x <%=@product.productinformation.width%> x <%=@product.productinformation.height%></p>
+	<p>Weight: <%=@product.productinformation.productweight%> Lbs.</p>
+	</div>
+
+	<div class ="your_respond col-md-5">
+
+		<h1><%=@vote.user.name%>'s result</h1>
+
+		<%if @vote.result%>
+			<p><%=image_tag("smile_face.jpeg",class: "thumbnail_face")%></p>
+		<%else%>
+			<p><%=image_tag("sad_face.jpeg", class: "thumbnail_face")%></p>
+		<%end%>
+
+		<h1>My response</h1>
+		<h3>"<%=@vote.comment%>"</h3>
+	</div>
+</div>

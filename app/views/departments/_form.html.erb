@@ -1,0 +1,10 @@
+<div class="form-group">
+<%=form_for(@department) do |f|%>
+<p><%=f.label('Department\'s name')%></p>
+<p><%=f.text_field(:departmentname)%></p>
+		<%=f.fields_for :subdepartments do |subdepartment_f|%>
+			<p>Sub-department: <%=subdepartment_f.text_field :subdepartmentname%></p>
+		<%end%>
+<%=f.submit%>
+<%end%>
+</div>	

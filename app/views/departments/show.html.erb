@@ -1,0 +1,9 @@
+<%= stylesheet_link_tag "products" %>
+<h1><%=@department.departmentname%></h1>
+<%@subdepartments.each do |subdepartment|%>
+	<%subdepartment.products.each do |product|%>
+		<%@products.push(product)%>
+	<%end%>
+<%end%>
+
+<%=render_productlist(@products.sort_by(&:product_name))%>

@@ -1,0 +1,5 @@
+<p><%= form_tag(new_product_path, method: :get) do %></p>
+<p>What would you like to add ?</p>
+<p><%= select_tag :id,options_from_collection_for_select(@departments,:id,:departmentname)%></p>
+<p><%= submit_tag 'Proceed'%></p>
+<%end%>

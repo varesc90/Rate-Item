@@ -1,0 +1,35 @@
+<div class ="product_show_page row">
+
+<div class ="product_detail col-md-7"
+<h3><%=@product.product_name%></h3>
+<%=image_tag(@product.product_pic.url(:full))%>
+<h5>Post by: <%=@product.user.email%></h5>
+<h4><%=@product.votes.where(result:true).count%> people like this product <%=link_to('See why ?',product_show_vote_path(result:true))%></h4>
+<h4><%=@product.votes.where(result:false).count%> people don't like this product <%=link_to('See why?',product_show_vote_path)%></h4>
+
+
+<h3>Product Information</h3>
+<p><%=@product.productdescription%></p>
+<p>Dimension (L x W x H) : <%=@product.productinformation.length%> x <%=@product.productinformation.width%> x <%=@product.productinformation.height%></p>
+<p>Weight: <%=@product.productinformation.productweight%> Lbs.</p>
+<%if user_signed_in?	%>
+<%if admin? || current_user.email == @product.user.email%>
+<%=link_to('Delete',product_path(@product),method: :delete)%>
+<%=link_to('Edit',edit_product_path(@product))%>
+<%end%>
+<%end%>
+
+</div>
+
+<div class="vote_form row col-md-5">
+	<p class="topic bg-primary">RATE ME</p>
+	<%if user_signed_in?%>
+		<%if @results_from_current_user.exists?%>
+			<p>You already voted for this product</p>
+		<%else%>
+			<%=	render(partial: 'votes/form')%>
+		<%end%>
+	<%end%>
+</div>
+
+</div>

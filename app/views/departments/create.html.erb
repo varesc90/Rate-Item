@@ -1,0 +1,9 @@
+<h1>Add new department</h1>
+
+<% if @department.invalid?%>
+	<%@department.errors.full_messages.each do |error|%>
+	<p><%=error%></p>
+	<%end%>
+<%end%>
+
+<%=render('form')%>

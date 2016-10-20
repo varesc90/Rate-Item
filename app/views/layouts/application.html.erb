@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rate-Item</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="controller-<%= params[:controller] %> action-<%= params[:action] %>">
+	<div class="site_header row bg-info">
+		<div class="home_link col-md-1"><%=link_to('Rate-Item',root_path, class: "btn btn-default")%></div>
+		<div class="search_box col-md-10">
+			<%=form_tag search_path,method: :get, class:'main_search_box' do%>
+				<%=text_field_tag :query, params[:query]%>
+			<%=submit_tag "Search", class:"btn btn-default"%>
+			<%end%>
+		</div>
+
+		<div class=" sign_in col-md-1">
+			<%if user_signed_in?%>
+				<%=link_to('Sign Out',destroy_user_session_path,method: :delete, class:"btn btn-default")%>
+			<%else%>
+				<%=link_to(new_user_session_path) do%>
+					<p>Hello, Sign in <span>Your Account</span></p>
+				<%end%>
+			<%end%>
+		</div>
+	</div>
+
+
+
+	<div class="menu row">
+		<div class="department_link col-md-12">
+			<%=link_to('View all departments',departments_path,class:"btn btn-default")%>
+			<% if admin?%>
+			<%=link_to('Add new Department',new_department_path,class:"btn btn-default")%>
+			<%=link_to('Add new Sub-Department',new_subdepartment_path,class:"btn btn-default")%>
+			<%end%>
+		</div>
+	</div>
+
+	<div class="profile row">
+		<div class="user_name col-md-2">
+			<% if user_signed_in?%>
+				<p class="profile_name">Hello <%=link_to(current_user.name,user_path(current_user))%> !</p>
+			<%else%>
+				<p class="profile_name">Hello Guest !</p>
+			<%end%>
+		</div>
+		<% if user_signed_in?%>
+		<div class="user_status col-md-2">
+			<p>You have <%=current_user.products.count%> items</p>
+			<p>You rated <%=current_user.votes.count%> item</p>
+		</div>
+		<%end%>
+	</div>
+	
+	<%if notice || alert%>
+		<div class="notice row">
+				<p class="bg-info"><%= notice %></p>
+				<p class="bg-danger"><%= alert %></p>
+		</div>
+	<%end%>
+
+	<%= yield %>
+
+
+
+</body>
+</html>

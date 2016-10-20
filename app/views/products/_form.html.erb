@@ -1,0 +1,17 @@
+<%=form_for @product, multipart: true do |f|%>
+	<p><%=f.label('Sub-category')%></p>
+	<p><%=f.collection_select(:subdepartment_id,@subdepartments,:id,:subdepartmentname)%></p>
+	<p><%=f.label('Image')%></p>
+	<p><%=f.file_field(:product_pic)%></p>
+	<p><%=f.label('Name')%></p>
+	<p><%=f.text_field(:product_name)%></p>
+	<p><%=f.label('Description')%></p>
+	<p><%=f.text_area(:productdescription)%></p>
+	<%=f.fields_for(:productinformation) do |p|%>
+		<p><%=p.label('Dimension')%></p>
+		<p><%=p.text_field :length%>x<%=p.text_field :height%>x<%=p.text_field :width%></p>
+		<p><%=p.label('Product Weight')%></p>
+		<p><%=p.text_field :productweight%></p>
+	<%end%>
+	<p><%=f.submit%></p>
+<%end%>

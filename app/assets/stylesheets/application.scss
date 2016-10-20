@@ -1,0 +1,82 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "app/*";
+
+.site_header{
+	border: black solid 1px;
+	.home_link{
+		padding: 1.5em;
+	}
+
+	.main_search_box{
+		padding: 1.5em;
+		width: 100%;
+		float:left;
+	
+		 input[type=text]{ 
+		 	float:left;
+ 			width: 90%;
+ 			height: 2em;
+		}
+ 		  input[type=submit]{
+ 		  width: 10%;
+ 	  	  height: 2em;
+ 	  	  float: left;
+
+ 		}	
+ 	}
+ 	.sign_in{
+ 		padding:1.5em 0 1.5em 0;
+ 	}
+}
+
+.menu{
+	border-bottom: solid black 1px;
+	.department_link{
+		padding: 1.5em;
+	}
+}
+
+.profile{
+	border-bottom: solid black 1px;
+	padding:1.5em;
+	background-color: orange;
+}
+
+.notice{
+	padding:1.5em;
+}
+
+.vote_form{
+	width: 40%;
+	box-sizing: border-box;
+	float:left;
+}
+
+
+.row{
+	margin: 0;
+}
+
+.topic{
+	font-size: 30px;
+	text-align: center;
+}
+
+.show_top_ten_products, .show_trending_products, .show_recent_products{
+	border: 2px solid black;
+	margin: 1em;
+	padding: 1em;
+}
+
+.profile_name{
+	font-size: 20px;
+	color: white;
+}
+
+.your_respond{
+	.thumbnail_face{
+		width: 200px;
+	}
+}

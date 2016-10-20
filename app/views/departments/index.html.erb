@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "departments" %>
+
+<h1>Departments</h1>
+
+<div class="departments_list row">
+<%@departments.each do |department|%>
+<div class="department">
+	<h3><%=link_to(department.departmentname,department)%></h3>
+	<ul>
+		<%department.subdepartments.each do |subdepartment|%>
+		<li><%=link_to(subdepartment.subdepartmentname,subdepartment)%>
+		<% if admin? %>
+				<%=link_to('Delete',subdepartment_path(subdepartment),method: :delete)%>
+			<%end%>
+		</li>
+		<%end%>
+	</ul>
+	<% if admin?%>
+		<%=link_to('Edit',edit_department_path(department))%>
+	<%end%>
+</div>
+<%end%>
+
+</div>

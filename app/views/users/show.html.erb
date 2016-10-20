@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag "users" %>
+
+<h1><%=@user.name%> 's log</h1>
+
+<div class="row">
+	<div class="col-md-6">
+		
+		<h3>Added by you</h3>
+		<%@products.each do |product|%>
+		<div class="user_log">
+			<p><%=link_to(product.product_name,product)%></p>
+			<p><%=product.created_at%></p>
+		</div>
+		<%end%>
+	</div>
+
+<div class="col-md-6">
+	<h3>Voted by you</h3>
+
+	<%if @votes %>
+		<%@votes.each do |vote|%>
+			<div class='user_log'>
+				<p><%=link_to(vote.product.try(:product_name),product_path(vote.product.id))%></p>
+				<%if vote.result == true%>
+					<p>You like this product</p>
+				<%else%>
+					<p>You do not like this product</p>
+				<%end%>
+				<p>Voted on <%=vote.created_at%></p>
+			</div>
+		<%end%>
+	<%else%>
+		<p>You haven't voted for any product yet</p>
+	<%end%>
+</div>
+

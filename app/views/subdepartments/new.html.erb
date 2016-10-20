@@ -1,0 +1,9 @@
+<h1>Add New Sub-Department</h1>
+
+<%=form_for(@subdepartment) do |f|%>
+<p><%=f.label(:department)%></p>
+<p><%=f.collection_select(:department_id,@departments,:id,:departmentname)%></p>
+<p><%=f.label('Sub-depatment\'s name')%></p>
+<p><%=f.text_field(:subdepartmentname)%></p>
+<p><%=f.submit%></p>
+<%end%>

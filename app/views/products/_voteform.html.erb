@@ -1,0 +1,7 @@
+<%=form_for(@vote) do |f|%>
+<%=f.radio_button_tag(:result, :true)%>
+<%=f.label_tag('YES')%>
+<%=f.radio_button_tag(:result, :false)%>
+<%=f.labe_tag('NO')%>
+<%=f.submit%>
+<%end%>
